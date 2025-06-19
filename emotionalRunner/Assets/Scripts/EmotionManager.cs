@@ -12,7 +12,7 @@ public class EmotionManager : MonoBehaviour
     public Emotion currentEmotion;
 
 
-    public float changeTimeIntervel = 3f;
+    public float changeTimeIntervel = 30f;
     private float baseMoveSpeed;
     private float baseJumpForce;
 
@@ -21,6 +21,7 @@ public class EmotionManager : MonoBehaviour
     {
         baseMoveSpeed = player.moveSpeed;
         baseJumpForce = player.jumpForce;
+        AudioScript.instance.Music("Happy");
 
         StartCoroutine(ChangeEmotion());
     }
@@ -48,22 +49,23 @@ public class EmotionManager : MonoBehaviour
         switch (currentEmotion)
         {
             case Emotion.Happy:
+                AudioScript.instance.Music("Happy");
 
                 break;
             case Emotion.Sad:
                 player.moveSpeed = baseMoveSpeed * 0.5f;
-                
+                AudioScript.instance.Music("Sad");
 
                 break;
             case Emotion.Angry:
                 player.jumpForce = baseJumpForce * 1.2f;
-                
+                AudioScript.instance.Music("Angry");
 
+        
                 break;
             case Emotion.Scared:
                 player.moveSpeed = baseMoveSpeed * 1.5f;
-                
-
+                AudioScript.instance.Music("Scared");
                 break;
 
         }

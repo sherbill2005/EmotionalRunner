@@ -32,7 +32,7 @@ public class HealthManage : MonoBehaviour
     {
         currentHealth -= damage;
         HealthSlider.value = currentHealth;
-        if (currentHealth <= 0) Die();
+        if (currentHealth <= 0) Die();  
     }
 
     public void IncreaseHealth(int healthIncrease)
@@ -49,14 +49,15 @@ public class HealthManage : MonoBehaviour
     public void Die()
     {
         playerController.DeadAnimation();
-
-        // This is the method that will be called when the player dies
+        
+        
         
     }
 
     public void ShowGameOverUI()
     {
         GameOverUI.instance.Gameover();
+        PlayerStats.instance.ADDDeaths();
 
     }
     

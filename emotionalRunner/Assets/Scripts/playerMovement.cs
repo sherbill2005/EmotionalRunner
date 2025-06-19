@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 7f;
@@ -10,12 +10,23 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     Animator Animator;
     public GemManager gemManager;
+    Controls controls;
 
+
+    void Awake()
+    {
+        controls = new Controls();
+        controls.PS4.Attack.performed += ctx => Attack();
+        controls.PS4.Jump.performed += ctx => Jump();
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
+        
     }
+    void OnEnable() => controls.Enable();
+    void OnDisable() => controls.Disable();
 
     void Update()
     {
@@ -25,25 +36,24 @@ public class PlayerController : MonoBehaviour
         Animator.SetFloat("Yvelocity", rb.linearVelocity.y);
 
 
-        // Jump only if grounded
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        // Jump();
+        
+        // Attack();
+
+    }
+    void Jump()
+    {
+        if (isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             Animator.SetBool("IsJumping", !isGrounded);
-
         }
-
-        Attack();
-
     }
-    void Attack()
-    {
-        if (Input.GetKeyDown(KeyCode.D))
-        {
+    void Attack(){
             IsAttacking = true;
             Animator.SetTrigger("Attack");
-              // IsAttacking = false;
-        }    
+            SFXscript.instance.PlaySound(SFXscript.instance.attackClip);
+        
     }
     void EndAttack()
     {
@@ -54,24 +64,32 @@ public class PlayerController : MonoBehaviour
     {
         Animator.SetTrigger("IsDead");
         this.enabled = false;
+        SFXscript.instance.PlaySound(SFXscript.instance.deathClip);
  }
 
 
     // All the collistions
     void HandleGemCollision(Collider2D collision)
-{
+    {
 
         gemManager.AddScore(1);
+        PlayerStats.instance.ADDGems();
         Destroy(collision.gameObject);
+        SFXscript.instance.PlaySound(SFXscript.instance.gemPickupClip);
         // Debug.Log("Gem collected!");
-    
-}
+
+    }
     void HandleEnemyCollision(Collider2D collision)
     {
-        
+
         if (IsAttacking == false)
         {
             GetComponent<HealthManage>().TakeDamage(30);
+            SFXscript.instance.PlaySound(SFXscript.instance.hurtClip);
+        }
+        else
+        {
+            PlayerStats.instance.ADDKills();
         }
         Destroy(collision.gameObject);
     }

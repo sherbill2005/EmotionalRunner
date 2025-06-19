@@ -9,7 +9,7 @@ public class PlayerStats : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            
         }
         else Destroy(gameObject);
     }
@@ -20,15 +20,25 @@ public class PlayerStats : MonoBehaviour
     public void ADDKills() => PlayerPrefs.SetInt("TotalKills", PlayerPrefs.GetInt("TotalKills", 0) + 1);
 
     public int GetGems() => PlayerPrefs.GetInt("TotalGems", 0);
-    public int GetDeaths() => PlayerPrefs.GetInt("TotalDeaths", 0);
+    public int GetDeaths() => PlayerPrefs.GetInt("TotalDeaths", 0); 
     public int GetKills() => PlayerPrefs.GetInt("TotalKills", 0);
 
     public void ResetStats()
     {
-         PlayerPrefs.DeleteKey("TotalGems");
+        PlayerPrefs.DeleteKey("TotalGems");
         PlayerPrefs.DeleteKey("TotalKills");
         PlayerPrefs.DeleteKey("TotalDeaths");
+        PlayerPrefs.Save();
     }
 
+
+    public void OnClearProgressButton()
+    {
+
+        PlayerStats.instance.ResetStats();
+        DashBoardUI.instance.UpdateStats();
+         
+         
+    }
 
 }

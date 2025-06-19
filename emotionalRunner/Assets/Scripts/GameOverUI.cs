@@ -15,12 +15,23 @@ public class GameOverUI : MonoBehaviour
     {
         Time.timeScale = 0f;
         gameOverPanel.SetActive(true);
+    
         // gemManager.EndScoreUpdate();
-        
+
     }
     public void Restartgame()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
+
+    }
+
+    public void ShowMainMenu()
+    {
+        gameOverPanel.SetActive(false);
+        
+        DashBoardUI.instance.DashBoard();
+
     }
 }

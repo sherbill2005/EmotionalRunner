@@ -8,16 +8,20 @@ public class PauseManager : MonoBehaviour
     private bool isPaused = false;
     public GameObject gameOverUI;
 
-    
+    private Controls controls;
 
-    void Update()
+    void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            if(gameOverUI.activeSelf) return;
+        controls = new Controls();
+        controls.PS4.Pause.performed += ctx => Pausetrigger();
+    }
+    void OnEnable() => controls.Enable();
+    void OnDisable() => controls.Disable(); 
+    void Pausetrigger()
+    {
+        if(gameOverUI.activeSelf) return;
             if (isPaused) ResumeGame();
             else PauseGame();
-        }
     }
 
     public void ResumeGame()
@@ -32,15 +36,12 @@ public class PauseManager : MonoBehaviour
         GamePauseUI.SetActive(true);
         Time.timeScale = 0f;
      }
-    // public void RestartGame()
-    // {
-    //     Time.timeScale = 1f;
-    //     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    // }
-    public void MainMenu()
+    public void MainMenuPauseButton()
     {
-        // isPaused = true;
-        // // MainMenuPanel.SetActive(true);x
-        // Time.timeScale = 0f;
+        GamePauseUI.SetActive(false);
+        
+        DashBoardUI.instance.DashBoard();
+
     }
+  
 }
