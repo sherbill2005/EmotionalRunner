@@ -13,6 +13,8 @@ public class EmotionUI : MonoBehaviour
 
 
     public Sprite happySprite;
+    public Sprite NormalSprite;
+
     public Sprite angrySprite;
     public Sprite sadSprite;
     public Sprite scaredSprite;
@@ -27,8 +29,15 @@ public class EmotionUI : MonoBehaviour
         switch (emotionManager.currentEmotion)
         {
             case EmotionManager.Emotion.Happy:
-                emotionIcon.sprite = happySprite;
+                emotionIcon.sprite = happySprite;;
                 emotionText.text = "Happy";
+                emotionText.color = Color.green;
+                Description.text = "Speed: +30%\nJump: +30% ";
+
+                break;
+            case EmotionManager.Emotion.Normal:
+                emotionIcon.sprite = NormalSprite;
+                emotionText.text = "Normal";
                 emotionText.color = Color.yellow;
                 Description.text = "Speed: Normal\nJump: Normal ";
 
@@ -37,13 +46,13 @@ public class EmotionUI : MonoBehaviour
                 emotionIcon.sprite = angrySprite;
                 emotionText.text = "Angry";
                 emotionText.color = Color.magenta;
-                Description.text = "Speed: Normal\nJump: +60% ";
+                Description.text = "Speed: +50%\nJump: +60% ";
                 break;
             case EmotionManager.Emotion.Sad:
                 emotionIcon.sprite = sadSprite;
                 emotionText.text = "Sad";
                 emotionText.color = Color.blue;
-                Description.text = "Speed: -50%\nJump: Normal ";
+                Description.text = "Speed: -30%\nJump: +20% ";
                 break;
             case EmotionManager.Emotion.Scared:
                 emotionIcon.sprite = scaredSprite;

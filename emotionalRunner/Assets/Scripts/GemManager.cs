@@ -7,7 +7,7 @@ public class GemManager : MonoBehaviour
 {
 
 
-    public int score = 0;
+    public int score = 0, nextMilestone = 50;
     
     public TMP_Text score_Text;
     public TMP_Text EndScore_Text;
@@ -17,8 +17,12 @@ public class GemManager : MonoBehaviour
     {
         score += add;
         score_Text.text = score.ToString();
-        
+
         EndScore_Text.text = score.ToString();
+        if (score >= nextMilestone) {
+            EmotionManager.instance.setemotion(EmotionManager.Emotion.Happy);
+            nextMilestone += 50; }
+
     }
    
 }

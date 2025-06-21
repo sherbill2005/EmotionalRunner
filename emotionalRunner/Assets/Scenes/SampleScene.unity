@@ -150,7 +150,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2034741864}
   currentEmotion: 0
-  changeTimeIntervel: 30
 --- !u!4 &34429540
 Transform:
   m_ObjectHideFlags: 0
@@ -2686,6 +2685,7 @@ MonoBehaviour:
   SadClip: {fileID: 8300000, guid: d31eb31724ffab849b66db0dd228040a, type: 3}
   AngryClip: {fileID: 8300000, guid: 2550ee76bfc945b4f85aaa77e6ad8015, type: 3}
   ScaredClip: {fileID: 8300000, guid: 751400f04bae8d141ba39e6a345b3e72, type: 3}
+  NormalClip: {fileID: 8300000, guid: 08f0a563c87ffb34fbf57a477ceb848c, type: 3}
 --- !u!82 &1033403347
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3329,6 +3329,7 @@ MonoBehaviour:
   emotionText: {fileID: 1149298707}
   Description: {fileID: 211357546}
   happySprite: {fileID: 21300000, guid: 8fb28920b37fd8347a09c4f70419f3a3, type: 3}
+  NormalSprite: {fileID: 21300000, guid: c6be984e535fc4649bf34467ee12027d, type: 3}
   angrySprite: {fileID: 21300000, guid: 222906c2511a36d4bbc384902c49f840, type: 3}
   sadSprite: {fileID: 21300000, guid: 929143dc78cf79040bbf227cde723ee4, type: 3}
   scaredSprite: {fileID: 21300000, guid: 85c72cb5892d0ad44a5474b195f830a8, type: 3}
@@ -3441,6 +3442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
+  nextMilestone: 50
   score_Text: {fileID: 165753612}
   EndScore_Text: {fileID: 185595232}
 --- !u!4 &1411173457

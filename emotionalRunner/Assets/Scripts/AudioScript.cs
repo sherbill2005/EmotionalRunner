@@ -6,8 +6,9 @@ public class AudioScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public static AudioScript instance;
     public AudioSource bgMusicSource;
-    public AudioClip HappyClip, SadClip, AngryClip, ScaredClip;
-
+    public AudioClip HappyClip, SadClip, AngryClip, ScaredClip, NormalClip;
+    
+       
     void Awake()
     {
         if (instance == null)
@@ -24,6 +25,9 @@ public class AudioScript : MonoBehaviour
         {
             case "Happy":
                 bgMusicSource.clip = HappyClip;
+                break;
+            case "Normal":
+                bgMusicSource.clip = NormalClip;
                 break;
             case "Angry":
                 bgMusicSource.clip = AngryClip;

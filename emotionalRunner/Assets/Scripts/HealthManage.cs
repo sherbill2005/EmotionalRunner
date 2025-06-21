@@ -32,7 +32,9 @@ public class HealthManage : MonoBehaviour
     {
         currentHealth -= damage;
         HealthSlider.value = currentHealth;
-        if (currentHealth <= 0) Die();  
+            
+        if (currentHealth <= 0) Die(); 
+
     }
 
     public void IncreaseHealth(int healthIncrease)
@@ -40,6 +42,8 @@ public class HealthManage : MonoBehaviour
         if (currentHealth == maxHealth) return;
         currentHealth += healthIncrease;
         HealthSlider.value = currentHealth;
+        if(currentHealth == maxHealth) EmotionManager.instance.setemotion(EmotionManager.Emotion.Sad);
+
     }
 
     private IEnumerator GameoverPanelDelay(float delay)
