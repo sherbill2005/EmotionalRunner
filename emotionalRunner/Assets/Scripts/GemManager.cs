@@ -19,9 +19,7 @@ public class GemManager : MonoBehaviour
         score_Text.text = score.ToString();
 
         EndScore_Text.text = score.ToString();
-        if (score >= nextMilestone) {
-            EmotionManager.instance.setemotion(EmotionManager.Emotion.Happy);
-            nextMilestone += 50; }
+       
 
     }
    

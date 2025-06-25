@@ -150,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2034741864}
   currentEmotion: 0
+  emotionChangeInterval: 15
 --- !u!4 &34429540
 Transform:
   m_ObjectHideFlags: 0

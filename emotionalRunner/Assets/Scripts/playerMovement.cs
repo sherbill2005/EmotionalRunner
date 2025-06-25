@@ -86,9 +86,6 @@ public class PlayerController : MonoBehaviour
         if (IsAttacking == false)
         {
             GetComponent<HealthManage>().TakeDamage(30);
-            EmotionManager.instance.setemotion(EmotionManager.Emotion.Angry);
-            
-            
             SFXscript.instance.PlaySound(SFXscript.instance.hurtClip);
         }
         else

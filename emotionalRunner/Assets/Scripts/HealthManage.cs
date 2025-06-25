@@ -42,7 +42,7 @@ public class HealthManage : MonoBehaviour
         if (currentHealth == maxHealth) return;
         currentHealth += healthIncrease;
         HealthSlider.value = currentHealth;
-        if(currentHealth == maxHealth) EmotionManager.instance.setemotion(EmotionManager.Emotion.Sad);
+        
 
     }
 
