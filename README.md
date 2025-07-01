@@ -1,4 +1,6 @@
 # Emotion Runner
+![1](https://github.com/user-attachments/assets/1fe0627a-3456-4b8d-89f7-dfff767d5219)
+
 
 **Emotion Runner** is a 2D endless runner game developed in Unity. The game combines classic runner mechanics with a unique emotional twist. The player's emotion dynamically changes based on in-game events, affecting abilities like speed and jump power.
 
