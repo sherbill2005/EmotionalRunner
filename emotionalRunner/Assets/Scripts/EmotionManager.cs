@@ -81,13 +81,13 @@ public class EmotionManager : MonoBehaviour
 
             case Emotion.Sad:
                 player.moveSpeed = baseMoveSpeed * 0.7f;
-                player.jumpForce = baseJumpForce * 1.4f;
+                player.jumpForce = baseJumpForce * 1.2f;
                 AudioScript.instance.Music("Sad");
                 break;
 
             case Emotion.Angry:
                 player.moveSpeed = baseMoveSpeed * 1.3f;
-                player.jumpForce = baseJumpForce * 1.2f;
+                player.jumpForce = baseJumpForce * 1.4f;
                 AudioScript.instance.Music("Angry");
                 break;
 
