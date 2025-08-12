@@ -7,7 +7,8 @@ public class DashBoardUI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created4
     public static DashBoardUI instance;
     public GameObject Dashboardpanel;
-    public TextMeshProUGUI gemText, KillsText, DeathText;
+    public TextMeshProUGUI gemText, KillsText, DeathText, HighScoreText;
+
 
 void Awake()
     {
@@ -30,7 +31,9 @@ void Awake()
     public void UpdateStats()
     {
         gemText.text = "TOTAL Gems: " + PlayerStats.instance.GetGems();
-        KillsText.text ="TOTAL KILLS: " +  PlayerStats.instance.GetKills();
+        KillsText.text = "TOTAL KILLS: " + PlayerStats.instance.GetKills();
         DeathText.text = "TOTAL DEATHS: " + PlayerStats.instance.GetDeaths();
+        HighScoreText.text = "HIGH SCORE: " + PlayerStats.instance.GetHighScore();
+
     }
 }

@@ -7,8 +7,8 @@ public class GemManager : MonoBehaviour
 {
 
 
-    public int score = 0, nextMilestone = 50;
-    
+    public int score = 0;
+
     public TMP_Text score_Text;
     public TMP_Text EndScore_Text;
 
@@ -19,8 +19,13 @@ public class GemManager : MonoBehaviour
         score_Text.text = score.ToString();
 
         EndScore_Text.text = score.ToString();
-       
+        if (score > PlayerStats.instance.GetHighScore())
+        {
+            PlayerStats.instance.SetHighScore(score);
+        }
+
 
     }
+    
    
 }
